@@ -14,11 +14,31 @@ class Persona {
     }
 }
 
+class Cuenta{
+    double saldo;
+
+    Cuenta(double saldoInicial){
+        saldo = saldoInicial;
+    }
+
+    void cargar(double cantidad){
+        saldo = saldo - cantidad;
+    }
+
+    void abonar(double cantidad){
+        saldo = saldo + cantidad;
+    }
+}
+
 class Cliente extends Persona {
     int numero;
 
     Cliente(String nombre, String sexo, int edad, int numero) {
         super(nombre, sexo, edad);
+        this.numero = numero;
+    }
+
+    void asociarCuenta(Cuenta cuenta){
         this.numero = numero;
     }
 }
@@ -31,7 +51,6 @@ class Banco {
         clientes = new Cliente [cantidadClientes];
         this.nombre = nombre;
     }
-}
 
 Cliente crearCliente (String nombre, String sexo, int edad, int numero){
     System.out.println("Creando cliente...");
@@ -49,12 +68,13 @@ Cliente crearCliente (String nombre, String sexo, int edad, int numero){
 }
 
 void listarclientes(){
-    for (int i = 0, i < clientes.length; i ++){
+    for (int i = 0; i < clientes.length; i ++){
         if (clientes[i] != null){
             Cliente cliente = clientes[i];
             System.out.println("Cliente " + cliente.nombre + "No: " + cliente.numero);
         }
     }
+}
 }
 
 class Programa {
@@ -62,3 +82,4 @@ class Programa {
         System.out.println("Hello World!");
     }
 }
+
